@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Banque</title>
+  <link rel="stylesheet" th:href="@{/vendors/iconfonts/mdi/css/materialdesignicons.min.css}">
+  <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.base.css}">
+  <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.addons.css}">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+</head>
+
+<body>
+<div class="container-scroller">
+  <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+      <a class="navbar-brand brand-logo" th:href="@{/}" style="color: #1f2537;">
+        <i class="menu-icon mdi mdi-bank"></i>
+        Banque
+      </a>
+      <a class="navbar-brand brand-logo-mini" th:href="@{/}">
+        <img th:src="@{/images/logo-mini.svg}" alt="logo" />
+      </a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-center">
+      <button class="navbar-toggler navbar-toggler d-none d-lg-block navbar-dark align-self-center mr-3" type="button" data-toggle="minimize">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="container-fluid page-body-wrapper">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item nav-profile">
+          <div class="nav-link">
+            <a th:href="@{/}" class="btn btn-success btn-block">Home
+              <i class="mdi mdi-home"></i>
+            </a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+            <i class="menu-icon mdi mdi-human"></i>
+            <span class="menu-title">Clients</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="ui-basic1">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="/client">Clients List</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/addclient">Add Client</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <i class="menu-icon mdi mdi-chart-bar"></i>
+            <span class="menu-title">Employees</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="/employee">Employees List</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/addemployee">Add employee</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+            <i class="menu-icon mdi mdi-group"></i>
+            <span class="menu-title">Employee Groups</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="ui-basic2">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="/group">Groups List</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/addgroup">Add Group</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="main-panel">
+      <form th:action="@{/savegroup}" th:object="${groupe}" method="post">
+        <fieldset>
+          <legend>Groupe</legend>
+          <div class="form-group">
+            <label for="nomGroupe" class="form-label mt-4">Nom Groupe</label>
+            <input type="text" name="nomGroupe" class="form-control" id="nomGroupe"  placeholder="Nom Groupe">
+          </div>
+          <input type="submit" class="btn btn-primary" />
+        </fieldset>
+      </form>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{/vendors/js/vendor.bundle.addons.js}"></script>
+<script th:src="@{/js/off-canvas.js}"></script>
+<script th:src="@{/js/misc.js}"></script>
+<script th:src="@{/js/dashboard.js}"></script>
+
+
+</body>
+</html>

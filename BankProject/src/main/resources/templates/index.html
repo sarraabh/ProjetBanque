@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Banque</title>
+    <link rel="stylesheet" th:href="@{/vendors/iconfonts/mdi/css/materialdesignicons.min.css}">
+    <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.base.css}">
+    <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.addons.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+</head>
+
+<body>
+<div class="container-scroller">
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+            <a class="navbar-brand brand-logo" th:href="@{/}" style="color: #1f2537;">
+                <i class="menu-icon mdi mdi-bank"></i>
+                Banque
+            </a>
+            <a class="navbar-brand brand-logo-mini" th:href="@{/}">
+                <img th:src="@{/images/logo-mini.svg}" alt="logo" />
+            </a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center">
+            <button class="navbar-toggler navbar-toggler d-none d-lg-block navbar-dark align-self-center mr-3" type="button" data-toggle="minimize">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item nav-profile">
+                    <div class="nav-link">
+                        <a th:href="@{/}" class="btn btn-success btn-block">Home
+                            <i class="mdi mdi-home"></i>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="menu-icon mdi mdi-human"></i>
+                        <span class="menu-title">Clients</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic1">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/client">Clients List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/addclient">Add Client</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="menu-icon mdi mdi-chart-bar"></i>
+                        <span class="menu-title">Employees</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/employee">Employees List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/addemployee">Add employee</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="menu-icon mdi mdi-group"></i>
+                        <span class="menu-title">Employee Groups</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic2">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/group">Groups List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/addgroup">Add Group</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-panel">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                    <div class="card card-statistics">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <i class="mdi mdi-cube text-danger icon-lg"></i>
+                                </div>
+                                <div class="float-right">
+                                    <p class="mb-0 text-right">Clients</p>
+                                    <div class="fluid-container">
+                                        <h3 th:text="${clients}" class="font-weight-medium text-right mb-0"></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3 mb-0">
+                                <i class="mdi mdi-human mr-1" aria-hidden="true"></i> number of clients
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                    <div class="card card-statistics">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <i class="mdi mdi-receipt text-warning icon-lg"></i>
+                                </div>
+                                <div class="float-right">
+                                    <p class="mb-0 text-right">Accounts</p>
+                                    <div class="fluid-container">
+                                        <h3 th:text="${accounts}" class="font-weight-medium text-right mb-0"></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3 mb-0">
+                                <i class="mdi mdi-account mr-1" aria-hidden="true"></i> number of accounts
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                    <div class="card card-statistics">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <i class="mdi mdi-poll-box text-success icon-lg"></i>
+                                </div>
+                                <div class="float-right">
+                                    <p class="mb-0 text-right">Operations</p>
+                                    <div class="fluid-container">
+                                        <h3 th:text="${operations}" class="font-weight-medium text-right mb-0"></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3 mb-0">
+                                <i class="mdi mdi-chart-histogram mr-1" aria-hidden="true"></i> Total Operations
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                    <div class="card card-statistics">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <i class="mdi mdi-account-location text-info icon-lg"></i>
+                                </div>
+                                <div class="float-right">
+                                    <p class="mb-0 text-right">Employees</p>
+                                    <div class="fluid-container">
+                                        <h3 th:text="${employees}" class="font-weight-medium text-right mb-0"></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3 mb-0">
+                                <i class="mdi mdi-human mr-1" aria-hidden="true">number of employees</i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-7 grid-margin stretch-card">
+                    <!--weather card-->
+                    <div class="card card-weather">
+                        <div class="card-body">
+                            <div class="weather-date-location">
+                                <h3 th:text="${jour}"></h3>
+                                <p class="text-gray">
+                                    <span class="weather-date" th:text="${date}"></span>
+                                </p>
+                            </div>
+                            <div class="weather-data d-flex">
+                                <div class="mr-auto">
+                                    <h4 class="display-3">Banque</h4>
+                                    <p>
+                                        <i class="menu-icon mdi mdi-bank"></i>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{/vendors/js/vendor.bundle.addons.js}"></script>
+<script th:src="@{/js/off-canvas.js}"></script>
+<script th:src="@{/js/misc.js}"></script>
+<script th:src="@{/js/dashboard.js}"></script>
+
+
+</body>
+</html>
